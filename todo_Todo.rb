@@ -1,9 +1,10 @@
 class Todo
-  def initialize(tasks)
-    @tasks = tasks
+  def initialize
+    @tasks = []
   end
 
   def add(task)
+    @tasks << task
     puts "#{task.info} を追加しました。"
   end
 
@@ -15,7 +16,8 @@ class Todo
   end
 
   def delete(id:)
-    puts "#{@tasks[id-1].info} を削除しました。"
-    @tasks.delete_at(id-1)
+    delete_task = @tasks.find{|task| task.id == id}
+    @tasks.delete(delete_task)
+    puts "#{delete_task.info} を削除しました。"
   end
 end
